@@ -13,30 +13,6 @@ const secret = "blogManagement";
     return jwt.sign(data, secret, {});
 };
 
-    /*module.exports.verify = (req, res, next) => {
-    console.log(req.headers.authorization);
-
-    let token = req.headers.authorization;
-    if (typeof token === "undefined") {
-        return res.send({ auth: "Failed. No Token" });
-    } else {
-        token = token.slice(7, token.length);
-        jwt.verify(token, secret, function(err, decodedToken) {
-            if (err) {
-                return res.send({
-                    auth: "Failed",
-                    message: err.message
-                });
-            } else {
-                req.user = decodedToken;
-                console.log(req.user);
-                next();
-            }
-        });
-    }
-};
-*/
-
 module.exports.verify = (req, res, next) => {
     const token = req.headers.authorization ? req.headers.authorization.slice(7) : undefined;
 

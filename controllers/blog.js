@@ -182,12 +182,6 @@ module.exports.getMyBlogs = (req, res) => {
 
 
 
-
-
-
-
-
-
 // get comment
 
 module.exports.getComments = (req, res) => {
@@ -215,40 +209,6 @@ module.exports.getComments = (req, res) => {
         });
 };
 
-
-
-// delete comment
-
-/*module.exports.deleteComment = (req, res) => {
-    Blog.findById(req.params.id)
-        .then((blog) => {
-            if (!blog) {
-                return res.status(404).send({ error: 'Blog not found' });
-            }
-
-            const comment = blog.comments.id(req.body.commentId);
-            if (!comment) {
-                return res.status(404).send({ error: 'Comment not found' });
-            }
-
-            // Check if the user is the owner of the comment or an admin
-            if (comment.userId.toString() !== req.user.id && !req.user.isAdmin) {
-                return res.status(403).send({ error: 'Not authorized to delete this comment' });
-            }
-
-            // Remove the comment using the pull operator
-            blog.comments.pull(comment._id);
-
-            return blog.save()
-                .then(() => {
-                    return res.status(200).send({ message: 'Comment deleted successfully' });
-                });
-        })
-        .catch((err) => {
-            console.error("Error in deleting comment: ", err);
-            return res.status(500).send({ error: 'Error in deleting comment' });
-        });
-};*/
 
 // delete comment
 module.exports.deleteComment = (req, res) => {
